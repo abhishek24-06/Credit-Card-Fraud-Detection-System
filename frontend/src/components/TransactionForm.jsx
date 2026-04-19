@@ -203,7 +203,7 @@ export default function TransactionForm({ apiUrl, addToast }) {
             </button>
             <button
               onClick={handleReset}
-              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-navy-800 border border-navy-700 text-slate-400 text-sm font-medium hover:text-slate-200 hover:bg-navy-700 transition-all"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-400 text-sm font-medium hover:text-slate-200 hover:bg-slate-700 transition-all"
             >
               <RotateCcw size={14} />
               Reset
@@ -226,11 +226,11 @@ export default function TransactionForm({ apiUrl, addToast }) {
             <button
               type="button"
               onClick={() => toggleSection(section.title)}
-              className="w-full flex items-center justify-between p-5 hover:bg-navy-800/30 transition-colors"
+              className="w-full flex items-center justify-between p-5 hover:bg-slate-800/30 transition-colors"
             >
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-lg bg-blue-500/15 flex items-center justify-center">
-                  <span className="text-blue-400 text-xs font-bold">
+                <div className="w-8 h-8 rounded-lg bg-violet-500/15 flex items-center justify-center">
+                  <span className="text-violet-400 text-xs font-bold">
                     {sIdx + 1}
                   </span>
                 </div>
@@ -306,7 +306,7 @@ export default function TransactionForm({ apiUrl, addToast }) {
                 Adjust the sensitivity of fraud detection
               </p>
             </div>
-            <span className="text-2xl font-bold text-blue-400 font-mono">
+            <span className="text-2xl font-bold text-violet-400 font-mono">
               {threshold.toFixed(2)}
             </span>
           </div>
@@ -319,14 +319,14 @@ export default function TransactionForm({ apiUrl, addToast }) {
               step="0.01"
               value={threshold}
               onChange={(e) => setThreshold(parseFloat(e.target.value))}
-              className="flex-1 h-2 bg-navy-700 rounded-full appearance-none cursor-pointer
+              className="flex-1 h-2 bg-slate-700 rounded-full appearance-none cursor-pointer
                 [&::-webkit-slider-thumb]:appearance-none
                 [&::-webkit-slider-thumb]:w-5
                 [&::-webkit-slider-thumb]:h-5
                 [&::-webkit-slider-thumb]:rounded-full
-                [&::-webkit-slider-thumb]:bg-blue-500
+                [&::-webkit-slider-thumb]:bg-violet-500
                 [&::-webkit-slider-thumb]:shadow-lg
-                [&::-webkit-slider-thumb]:shadow-blue-500/30
+                [&::-webkit-slider-thumb]:shadow-violet-500/30
                 [&::-webkit-slider-thumb]:cursor-pointer
                 [&::-webkit-slider-thumb]:transition-all
                 [&::-webkit-slider-thumb]:hover:scale-110"

@@ -17,7 +17,7 @@ html {
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: #0f172a;
+  background-color: #020617;
   color: #e2e8f0;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -61,7 +61,7 @@ body {
 }
 
 .glass-card:hover {
-  border-color: rgba(59, 130, 246, 0.3);
+  border-color: rgba(139, 92, 246, 0.3);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
@@ -80,8 +80,8 @@ body {
 
 .input-field:focus {
   outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  border-color: #8b5cf6;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
 }
 
 .input-field::placeholder {
@@ -90,7 +90,7 @@ body {
 
 /* ── Gradient Button ── */
 .btn-gradient {
-  background: linear-gradient(135deg, #3b82f6, #2563eb, #1d4ed8);
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed, #6d28d9);
   color: white;
   font-weight: 600;
   padding: 12px 32px;
@@ -104,7 +104,7 @@ body {
 
 .btn-gradient:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
 }
 
 .btn-gradient:active {
@@ -146,15 +146,15 @@ body {
 
 /* ── Drag & Drop Zone ── */
 .drop-zone {
-  border: 2px dashed rgba(59, 130, 246, 0.4);
+  border: 2px dashed rgba(139, 92, 246, 0.4);
   border-radius: 16px;
   transition: all 0.3s ease;
 }
 
 .drop-zone:hover,
 .drop-zone.drag-over {
-  border-color: #3b82f6;
-  background: rgba(59, 130, 246, 0.05);
+  border-color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.05);
 }
 
 /* ── Toast Notifications ── */

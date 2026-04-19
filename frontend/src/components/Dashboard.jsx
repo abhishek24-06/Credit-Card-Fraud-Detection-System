@@ -27,10 +27,10 @@ const STAT_CARDS = [
     label: 'Total Analyzed',
     icon: TrendingUp,
     color: 'blue',
-    gradient: 'from-blue-500/20 to-blue-600/5',
-    border: 'border-blue-500/20',
-    text: 'text-blue-400',
-    iconBg: 'bg-blue-500/15',
+    gradient: 'from-violet-500/20 to-violet-600/5',
+    border: 'border-violet-500/20',
+    text: 'text-violet-400',
+    iconBg: 'bg-violet-500/15',
   },
   {
     key: 'fraud_detected',
@@ -314,7 +314,7 @@ export default function Dashboard({ apiUrl, addToast }) {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-navy-700/50">
+                <tr className="border-b border-slate-700/50">
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-400 uppercase">ID</th>
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-400 uppercase">Amount</th>
                   <th className="text-left py-3 px-4 text-xs font-semibold text-slate-400 uppercase">Probability</th>
@@ -326,7 +326,7 @@ export default function Dashboard({ apiUrl, addToast }) {
                 {stats.recent.map((tx, i) => (
                   <tr
                     key={i}
-                    className={`border-b border-navy-700/30 transition-colors hover:bg-navy-800/30 ${
+                    className={`border-b border-slate-700/30 transition-colors hover:bg-slate-800/30 ${
                       tx.is_fraud ? 'bg-red-500/5' : ''
                     }`}
                   >
@@ -336,7 +336,7 @@ export default function Dashboard({ apiUrl, addToast }) {
                     </td>
                     <td className="py-3 px-4">
                       <div className="flex items-center gap-2">
-                        <div className="w-16 h-1.5 bg-navy-700 rounded-full overflow-hidden">
+                        <div className="w-16 h-1.5 bg-slate-700 rounded-full overflow-hidden">
                           <div
                             className="h-full rounded-full"
                             style={{

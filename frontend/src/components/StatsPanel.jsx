@@ -8,8 +8,8 @@ const STATS_CONFIG = [
     key: 'total_analyzed',
     label: 'Total Analyzed',
     icon: TrendingUp,
-    color: 'text-blue-400',
-    bg: 'bg-blue-500/15',
+    color: 'text-violet-400',
+    bg: 'bg-violet-500/15',
   },
   {
     key: 'fraud_detected',

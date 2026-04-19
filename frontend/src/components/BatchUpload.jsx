@@ -129,8 +129,8 @@ export default function BatchUpload({ apiUrl, addToast }) {
           animate={dragOver ? { scale: 1.05 } : { scale: 1 }}
           className="space-y-4"
         >
-          <div className="w-16 h-16 mx-auto rounded-2xl bg-blue-500/15 flex items-center justify-center">
-            <Upload size={28} className="text-blue-400" />
+          <div className="w-16 h-16 mx-auto rounded-2xl bg-violet-500/15 flex items-center justify-center">
+            <Upload size={28} className="text-violet-400" />
           </div>
           <div>
             <p className="text-lg font-semibold text-slate-200">
@@ -168,7 +168,7 @@ export default function BatchUpload({ apiUrl, addToast }) {
               <div className="flex items-center gap-3">
                 <button
                   onClick={clearAll}
-                  className="p-2 rounded-lg hover:bg-navy-800 text-slate-400 hover:text-red-400 transition-all"
+                  className="p-2 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-red-400 transition-all"
                   title="Remove file"
                 >
                   <Trash2 size={16} />
@@ -210,7 +210,7 @@ export default function BatchUpload({ apiUrl, addToast }) {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div className="glass-card p-5 text-center">
                 <p className="text-xs text-slate-500 mb-1 uppercase tracking-wider">Total Rows</p>
-                <p className="text-3xl font-bold text-blue-400">{results.total}</p>
+                <p className="text-3xl font-bold text-violet-400">{results.total}</p>
               </div>
               <div className="glass-card p-5 text-center">
                 <p className="text-xs text-slate-500 mb-1 uppercase tracking-wider">Fraud Detected</p>
@@ -231,7 +231,7 @@ export default function BatchUpload({ apiUrl, addToast }) {
             <div className="flex justify-end">
               <button
                 onClick={downloadCSV}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-navy-800 border border-navy-700 text-slate-300 text-sm font-medium hover:bg-navy-700 transition-all"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-sm font-medium hover:bg-slate-700 transition-all"
                 id="download-results-btn"
               >
                 <Download size={16} />
@@ -246,8 +246,8 @@ export default function BatchUpload({ apiUrl, addToast }) {
               </h3>
               <div className="overflow-x-auto max-h-96 overflow-y-auto">
                 <table className="w-full text-sm">
-                  <thead className="sticky top-0 bg-navy-800 z-10">
-                    <tr className="border-b border-navy-700/50">
+                  <thead className="sticky top-0 bg-slate-800 z-10">
+                    <tr className="border-b border-slate-700/50">
                       <th className="text-left py-3 px-4 text-xs font-semibold text-slate-400 uppercase">
                         #
                       </th>
@@ -269,7 +269,7 @@ export default function BatchUpload({ apiUrl, addToast }) {
                     {results.results.map((r, i) => (
                       <tr
                         key={i}
-                        className={`border-b border-navy-700/30 transition-colors hover:bg-navy-800/30 ${
+                        className={`border-b border-slate-700/30 transition-colors hover:bg-slate-800/30 ${
                           r.is_fraud ? 'bg-red-500/5' : ''
                         }`}
                       >
@@ -278,7 +278,7 @@ export default function BatchUpload({ apiUrl, addToast }) {
                         </td>
                         <td className="py-2.5 px-4">
                           <div className="flex items-center gap-2">
-                            <div className="w-16 h-1.5 bg-navy-700 rounded-full overflow-hidden">
+                            <div className="w-16 h-1.5 bg-slate-700 rounded-full overflow-hidden">
                               <div
                                 className="h-full rounded-full transition-all"
                                 style={{

@@ -1,0 +1,13 @@
+{
+  "model": "Random Forest",
+  "threshold": 0.08,
+  "min_recall_floor": 0.8,
+  "selection_method": "recall_constrained_f1",
+  "val_precision": 0.3095,
+  "val_recall": 0.8125,
+  "val_f1": 0.4483,
+  "test_precision": 0.2486,
+  "test_recall": 0.9149,
+  "tuned_on": "validation_set",
+  "timestamp": null
+}

@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   LayoutDashboard,
-  ScanSearch,
   Upload,
   History,
   Shield,
@@ -11,7 +10,6 @@ import {
   X,
 } from 'lucide-react'
 import Dashboard from './components/Dashboard'
-import TransactionForm from './components/TransactionForm'
 import BatchUpload from './components/BatchUpload'
 import RecentTransactions from './components/RecentTransactions'
 import axios from 'axios'
@@ -20,7 +18,6 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000'
 
 const NAV_ITEMS = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { id: 'analyze', label: 'Analyze Transaction', icon: ScanSearch },
   { id: 'batch', label: 'Batch Upload', icon: Upload },
   { id: 'history', label: 'History', icon: History },
 ]
@@ -34,7 +31,7 @@ function Toast({ message, type, onClose }) {
   const colors = {
     error: 'bg-red-500/90 border-red-400',
     success: 'bg-green-500/90 border-green-400',
-    info: 'bg-blue-500/90 border-blue-400',
+    info: 'bg-violet-500/90 border-violet-400',
   }
 
   return (
@@ -85,8 +82,6 @@ export default function App() {
     switch (activePage) {
       case 'dashboard':
         return <Dashboard apiUrl={API_URL} addToast={addToast} />
-      case 'analyze':
-        return <TransactionForm apiUrl={API_URL} addToast={addToast} />
       case 'batch':
         return <BatchUpload apiUrl={API_URL} addToast={addToast} />
       case 'history':
@@ -97,16 +92,16 @@ export default function App() {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden bg-navy-900">
+    <div className="flex h-screen overflow-hidden bg-slate-900">
       {/* Sidebar */}
       <motion.aside
         animate={{ width: sidebarCollapsed ? 72 : 260 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
-        className="h-full flex flex-col border-r border-navy-700/50 bg-navy-900/95 backdrop-blur-xl z-20 flex-shrink-0"
+        className="h-full flex flex-col border-r border-slate-700/50 bg-slate-900/95 backdrop-blur-xl z-20 flex-shrink-0"
       >
         {/* Logo */}
-        <div className="flex items-center gap-3 px-4 py-5 border-b border-navy-700/50">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center flex-shrink-0">
+        <div className="flex items-center gap-3 px-4 py-5 border-b border-slate-700/50">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center flex-shrink-0">
             <Shield size={22} className="text-white" />
           </div>
           <AnimatePresence>
@@ -117,7 +112,7 @@ export default function App() {
                 exit={{ opacity: 0, width: 0 }}
                 className="overflow-hidden whitespace-nowrap"
               >
-                <h1 className="text-lg font-bold bg-gradient-to-r from-blue-400 to-blue-200 bg-clip-text text-transparent">
+                <h1 className="text-lg font-bold bg-gradient-to-r from-violet-400 to-violet-200 bg-clip-text text-transparent">
                   FraudGuard AI
                 </h1>
                 <p className="text-[10px] text-slate-500 font-medium tracking-wider uppercase">
@@ -139,14 +134,14 @@ export default function App() {
                 onClick={() => setActivePage(item.id)}
                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 group ${
                   isActive
-                    ? 'bg-blue-500/15 text-blue-400 border border-blue-500/20'
-                    : 'text-slate-400 hover:text-slate-200 hover:bg-navy-800/50 border border-transparent'
+                    ? 'bg-violet-500/15 text-violet-400 border border-violet-500/20'
+                    : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50 border border-transparent'
                 }`}
               >
                 <Icon
                   size={20}
                   className={`flex-shrink-0 ${
-                    isActive ? 'text-blue-400' : 'text-slate-500 group-hover:text-slate-300'
+                    isActive ? 'text-violet-400' : 'text-slate-500 group-hover:text-slate-300'
                   }`}
                 />
                 <AnimatePresence>
@@ -170,7 +165,7 @@ export default function App() {
         <div className="px-3 pb-4">
           <button
             onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-            className="w-full flex items-center justify-center py-2 rounded-lg text-slate-500 hover:text-slate-300 hover:bg-navy-800/50 transition-all text-xs"
+            className="w-full flex items-center justify-center py-2 rounded-lg text-slate-500 hover:text-slate-300 hover:bg-slate-800/50 transition-all text-xs"
           >
             {sidebarCollapsed ? '→' : '← Collapse'}
           </button>
@@ -180,7 +175,7 @@ export default function App() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Top Header */}
-        <header className="flex items-center justify-between px-6 py-4 border-b border-navy-700/50 bg-navy-900/80 backdrop-blur-xl flex-shrink-0">
+        <header className="flex items-center justify-between px-6 py-4 border-b border-slate-700/50 bg-slate-900/80 backdrop-blur-xl flex-shrink-0">
           <div>
             <h2 className="text-xl font-bold text-white">
               {NAV_ITEMS.find((n) => n.id === activePage)?.label || 'Dashboard'}

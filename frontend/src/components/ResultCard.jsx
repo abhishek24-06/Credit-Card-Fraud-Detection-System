@@ -159,7 +159,7 @@ export default function ResultCard({ result, onReset }) {
           {/* Analyze Another */}
           <button
             onClick={onReset}
-            className="flex items-center gap-2 mx-auto lg:mx-0 px-6 py-2.5 rounded-lg bg-navy-800 border border-navy-700 text-slate-300 text-sm font-medium hover:bg-navy-700 hover:text-white transition-all"
+            className="flex items-center gap-2 mx-auto lg:mx-0 px-6 py-2.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 text-sm font-medium hover:bg-slate-700 hover:text-white transition-all"
           >
             <RotateCcw size={16} />
             Analyze Another Transaction
