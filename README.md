@@ -5,7 +5,6 @@ A full-stack, industry-ready credit card fraud detection system powered by a **L
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green?logo=fastapi)
 ![React](https://img.shields.io/badge/React-18-blue?logo=react)
-![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
