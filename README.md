@@ -1,6 +1,6 @@
 # 🛡️ FraudGuard AI — Credit Card Fraud Detection
 
-A full-stack, industry-ready credit card fraud detection system powered by a **Random Forest** machine learning model. Features a **FastAPI** backend for real-time inference and a **React + TailwindCSS** dashboard for an interactive, visually stunning experience.
+A full-stack, industry-ready credit card fraud detection system powered by a **LightGBM** machine learning model. Features a **FastAPI** backend with automated preprocessing pipelines and a **React + TailwindCSS** dashboard engineered with a premium Slate & Violet aesthetic for a deeply interactive experience.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.100+-green?logo=fastapi)
@@ -23,14 +23,14 @@ A full-stack, industry-ready credit card fraud detection system powered by a **R
 
 | Feature                         | Description                                                                 |
 | ------------------------------- | --------------------------------------------------------------------------- |
-| **Single Transaction Analysis** | Analyze individual transactions with all 30 features (Time, V1–V28, Amount) |
-| **Batch CSV Upload**            | Upload CSV files for bulk fraud detection with downloadable results         |
+| **Batch CSV Upload**            | Upload unscaled, raw transaction datasets for bulk fraud detection          |
 | **Real-time Dashboard**         | Live statistics with animated charts (Pie, Bar) and counters                |
-| **Quick Demo Mode**             | Pre-filled sample data for instant fraud/legit testing                      |
-| **Configurable Threshold**      | Adjustable decision threshold (0.0–1.0) for sensitivity tuning              |
+| **Automated Dual Scaling**      | Backend automatically processes raw `Amounts` and `Times` against saved scalers |
+| **Dynamic Thresholding**        | Fully automated decision threshold configuration via backend settings         |
 | **Risk Level Classification**   | Color-coded HIGH / MEDIUM / LOW risk badges                                 |
 | **Transaction History**         | Searchable log of all analyzed transactions                                 |
-| **Responsive Design**           | Works on desktop and tablet devices                                         |
+| **Custom Aesthetic**            | Premium "Slate & Violet" modern interface breaking away from standard templates |
+| **Responsive Design**           | Works seamlessly on desktop and tablet devices                              |
 
 ---
 
@@ -40,27 +40,28 @@ A full-stack, industry-ready credit card fraud detection system powered by a **R
 credit-card-fraud-detection/
 ├── backend/
 │   ├── main.py              # FastAPI application
-│   ├── predictor.py          # Model loading & prediction logic
+│   ├── predictor.py          # Model loading & automatic dataframe scaling
 │   ├── schemas.py            # Pydantic request schemas
 │   ├── model/
-│   │   ├── fraud_model_random_forest.pkl   # Trained RF model
-│   │   └── robust_scaler.pkl               # Fitted RobustScaler
+│   │   ├── fraud_model_lightgbm.pkl   # Trained LightGBM model
+│   │   ├── amount_scaler.pkl          # Dedicated RobustScaler for Amount
+│   │   ├── time_scaler.pkl            # Dedicated RobustScaler for Time
+│   │   └── threshold_config.json      # Optimal decision boundary limit
 │   └── requirements.txt
 ├── frontend/
 │   ├── src/
 │   │   ├── App.jsx           # Main app with sidebar navigation
 │   │   ├── main.jsx          # React entry point
-│   │   ├── index.css         # Global styles + Tailwind
+│   │   ├── index.css         # Global Violet/Slate styles + Tailwind
 │   │   └── components/
 │   │       ├── Dashboard.jsx
-│   │       ├── TransactionForm.jsx
 │   │       ├── ResultCard.jsx
 │   │       ├── StatsPanel.jsx
 │   │       ├── RecentTransactions.jsx
 │   │       └── BatchUpload.jsx
 │   ├── package.json
 │   ├── vite.config.js
-│   ├── tailwind.config.js
+│   ├── tailwind.config.js    # Customized deep slate color palette
 │   └── postcss.config.js
 └── README.md
 ```
@@ -90,8 +91,8 @@ cd backend
 pip install -r requirements.txt
 
 # Start the API server
-uvicorn main:app --reload --port 8000
-```
+uvicorn main:app --host 127.0.0.1 --port 8000
+
 
 The API will be available at `http://localhost:8000`
 
@@ -121,23 +122,23 @@ The app will open at `http://localhost:5173`
 | ---------------- | ------ | ----------------------------------------------- |
 | `/`              | GET    | Root — API status and model info                |
 | `/health`        | GET    | Health check                                    |
-| `/predict`       | POST   | Analyze a single transaction                    |
-| `/predict/batch` | POST   | Batch analyze a CSV file                        |
+| `/predict`       | POST   | Analyze a single transaction using backend config|
+| `/predict/batch` | POST   | Batch analyze a raw CSV file automatically      |
 | `/stats`         | GET    | Get analysis statistics and recent transactions |
 
 ### POST `/predict` — Request Body
 
 ```json
 {
-  "Time": 0,
+  "Time": 10000,
   "V1": -1.3598,
   "V2": -0.0728,
   "V3": 2.5363,
   "...": "V4 through V28",
-  "Amount": 149.62,
-  "threshold": 0.5
+  "Amount": 149.62
 }
 ```
+*(No need to submit `threshold`, backend resolves this via `threshold_config.json`)*
 
 ### Response
 
@@ -146,7 +147,7 @@ The app will open at `http://localhost:5173`
   "fraud_probability": 0.0312,
   "is_fraud": 0,
   "risk_level": "LOW",
-  "threshold_used": 0.5
+  "threshold_used": 0.32
 }
 ```
 
@@ -157,26 +158,27 @@ The app will open at `http://localhost:5173`
 ### Backend
 
 - **FastAPI** — High-performance async API framework
-- **scikit-learn** — ML model inference
-- **joblib** — Model serialization
-- **pandas / numpy** — Data preprocessing
+- **LightGBM** — Advanced gradient boosting framework for ML inference
+- **scikit-learn** — Machine learning utilities
+- **joblib** — Model & scaler serialization
+- **pandas / numpy** — Incoming payload preprocessing
 
 ### Frontend
 
 - **React 18** — Component-based UI
 - **Vite** — Fast build tool
-- **TailwindCSS** — Utility-first CSS
-- **Framer Motion** — Smooth animations
+- **TailwindCSS** — Utility-first CSS (configured with Slate & Violet architecture)
+- **Framer Motion** — Smooth structural animations
 - **Recharts** — Charts and data visualization
 - **Lucide React** — Beautiful icons
 - **Axios** — HTTP client
 
 ### Model
 
-- **Random Forest Classifier** — 5-fold CV: ROC-AUC 1.0, PR-AUC 1.0, F1 0.9998
-- **RobustScaler** — Fitted on Amount and Time features
-- **Dataset** — 284,807 transactions (492 frauds, 0.17% imbalance)
-
+- **LightGBM Classifier** — High-performance gradient boosting tree
+- **Hardware Agnostic Scalers** — Dedicated, separated `.pkl` exports properly mapping unscaled payload components (Amount/Time).
+- **Dataset** — 284,807 Kaggle Credit Card transactions
+ 
 ---
 
 ## ⚙️ Environment Variables
@@ -187,6 +189,3 @@ The app will open at `http://localhost:5173`
 
 ---
 
-## 📄 License
-
-MIT License — feel free to use this for educational and commercial purposes.
